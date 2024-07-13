@@ -8,15 +8,17 @@ public class App {
     static int x = 1;
     static int y = 1;
     static int score = 0;
-    static int perfectScore = 102;
+    static int perfectScore;
     static String Player;
     static boolean game = true;
     static boolean chack = true;
 
     public static void run() {
         Scanner sc = new Scanner(System.in);
-        // 기본 배경(미로) 생성
+        // 단계별 배경(미로) 생성
         maze = Maze.background();
+        if (maze.length == 7)perfectScore = 110;
+        else if (maze.length == 11)perfectScore = 102;
 
         // 게임 시작 문구 및 간단한 설명 출력
         Service.first();
@@ -27,8 +29,8 @@ public class App {
 
         while (game) {
             if (chack) {
-                for (int x = 0; x < 11; x++) {
-                    for (int y = 0; y < 11; y++) {
+                for (int x = 0; x < maze.length; x++) {
+                    for (int y = 0; y < maze.length; y++) {
                         System.out.print(maze[x][y] + " ");
                     }
                     System.out.println("");
@@ -48,7 +50,8 @@ public class App {
                     } else if (maze[x - 1][y].equals("◆")) {
                         System.out.println("== Goal ==");
                         System.out.println("Score : " + (perfectScore - score));
-                        cmd = "exit";
+                        game = false;
+                        break;
                     } else if (maze[x - 1][y].equals("-")) {
                         maze[9][9] = Player;
                         x = 9;
@@ -70,7 +73,8 @@ public class App {
                     } else if (maze[x][y - 1].equals("◆")) {
                         System.out.println("== Goal ==");
                         System.out.println("Score : " + (perfectScore - score));
-                        cmd = "exit";
+                        game = false;
+                        break;
                     } else {
                         System.out.println("길이 막혀있습니다");
                         score++;
@@ -86,7 +90,8 @@ public class App {
                     } else if (maze[x + 1][y].equals("◆")) {
                         System.out.println("== Goal ==");
                         System.out.println("Score : " + (perfectScore - score));
-                        cmd = "exit";
+                        game = false;
+                        break;
                     } else {
                         System.out.println("길이 막혀있습니다");
                         score++;
@@ -102,7 +107,8 @@ public class App {
                     } else if (maze[x][y + 1].equals("◆")) {
                         System.out.println("== Goal ==");
                         System.out.println("Score : " + (perfectScore - score));
-                        cmd = "exit";
+                        game = false;
+                        break;
                     } else {
                         System.out.println("길이 막혀있습니다");
                         score++;
@@ -118,6 +124,5 @@ public class App {
                 }
             }
         }
-
     }
 }
