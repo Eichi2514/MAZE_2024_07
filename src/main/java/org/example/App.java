@@ -35,12 +35,12 @@ public class App {
                     }
                     System.out.println("");
                 }
-                chack = true;
             }
             while (true) {
                 System.out.print("COMMAND : ");
                 cmd = sc.nextLine();
                 if (cmd.equals("w")) {
+                    chack = true;
                     maze[x][y] = "□";
                     if (maze[x - 1][y].equals("□")) {
                         maze[x - 1][y] = Player;
@@ -64,6 +64,7 @@ public class App {
                         continue;
                     }
                 } else if (cmd.equals("a")) {
+                    chack = true;
                     maze[x][y] = "□";
                     if (maze[x][y - 1].equals("□")) {
                         maze[x][y - 1] = Player;
@@ -81,6 +82,7 @@ public class App {
                         continue;
                     }
                 } else if (cmd.equals("s")) {
+                    chack = true;
                     maze[x][y] = "□";
                     if (maze[x + 1][y].equals("□")) {
                         maze[x + 1][y] = Player;
@@ -98,6 +100,7 @@ public class App {
                         continue;
                     }
                 } else if (cmd.equals("d")) {
+                    chack = true;
                     maze[x][y] = "□";
                     if (maze[x][y + 1].equals("□")) {
                         maze[x][y + 1] = Player;
