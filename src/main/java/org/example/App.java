@@ -9,23 +9,24 @@ public class App {
     static int y = 1;
     static int score = 0;
     static int perfectScore;
-    static String Player;
+    static String player;
     static boolean game = true;
     static boolean chack = true;
 
     public static void run() {
         Scanner sc = new Scanner(System.in);
-        // 단계별 배경(미로) 생성
-        maze = Maze.background();
-        if (maze.length == 7)perfectScore = 110;
-        else if (maze.length == 11)perfectScore = 102;
-
         // 게임 시작 문구 및 간단한 설명 출력
         Service.first();
 
         // 플레이어 선택
-        Player = Service.playerChoice();
-        maze[x][y] = Player;
+        player = Service.playerChoice();
+
+        // 단계별 배경(미로) 생성
+        maze = Maze.background();
+        if (maze.length == 7) perfectScore = 110;
+        else if (maze.length == 11) perfectScore = 123;
+        else if (maze.length == 39) perfectScore = 255;
+        maze[x][y] = player;
 
         while (game) {
             if (chack) {
@@ -43,7 +44,7 @@ public class App {
                     chack = true;
                     maze[x][y] = "□";
                     if (maze[x - 1][y].equals("□")) {
-                        maze[x - 1][y] = Player;
+                        maze[x - 1][y] = player;
                         x--;
                         score++;
                         break;
@@ -52,12 +53,20 @@ public class App {
                         System.out.println("Score : " + (perfectScore - score));
                         game = false;
                         break;
-                    } else if (maze[x - 1][y].equals("-")) {
-                        maze[9][9] = Player;
-                        x = 9;
-                        y = 9;
-                        score++;
-                        break;
+                    } else if (player.equals("★") && maze[x - 1][y].equals("-")) {
+                        if (maze.length == 10) {
+                            maze[9][9] = player;
+                            x = 9;
+                            y = 9;
+                            score += 22;
+                            break;
+                        } else if (maze.length == 39){
+                            maze[5][1] = player;
+                            x = 5;
+                            y = 1;
+                            score += 147;
+                            break;
+                        }
                     } else {
                         System.out.println("길이 막혀있습니다");
                         score++;
@@ -67,7 +76,7 @@ public class App {
                     chack = true;
                     maze[x][y] = "□";
                     if (maze[x][y - 1].equals("□")) {
-                        maze[x][y - 1] = Player;
+                        maze[x][y - 1] = player;
                         y--;
                         score++;
                         break;
@@ -85,7 +94,7 @@ public class App {
                     chack = true;
                     maze[x][y] = "□";
                     if (maze[x + 1][y].equals("□")) {
-                        maze[x + 1][y] = Player;
+                        maze[x + 1][y] = player;
                         x++;
                         score++;
                         break;
@@ -103,7 +112,7 @@ public class App {
                     chack = true;
                     maze[x][y] = "□";
                     if (maze[x][y + 1].equals("□")) {
-                        maze[x][y + 1] = Player;
+                        maze[x][y + 1] = player;
                         y++;
                         score++;
                         break;
