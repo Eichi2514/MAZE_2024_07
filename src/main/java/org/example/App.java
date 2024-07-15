@@ -37,17 +37,15 @@ public class App {
                     System.out.println("");
                 }
             }
-            while (true) {
                 System.out.print("COMMAND : ");
                 cmd = sc.nextLine();
                 if (cmd.equals("w")) {
                     chack = true;
-                    maze[x][y] = "□";
-                    if (maze[x - 1][y].equals("□")) {
+                    maze[x][y] = " ";
+                    if (maze[x - 1][y].equals(" ")) {
                         maze[x - 1][y] = player;
                         x--;
                         score++;
-                        break;
                     } else if (maze[x - 1][y].equals("◆")) {
                         System.out.println("== Goal ==");
                         System.out.println("Score : " + (perfectScore - score));
@@ -59,81 +57,71 @@ public class App {
                             x = 9;
                             y = 9;
                             score += 22;
-                            break;
-                        } else if (maze.length == 39){
+                        } else if (maze.length == 39) {
                             maze[5][1] = player;
                             x = 5;
                             y = 1;
                             score += 147;
-                            break;
                         }
                     } else {
+                        maze[x][y] = player;
                         System.out.println("길이 막혀있습니다");
                         score++;
-                        continue;
                     }
                 } else if (cmd.equals("a")) {
                     chack = true;
-                    maze[x][y] = "□";
-                    if (maze[x][y - 1].equals("□")) {
+                    maze[x][y] = " ";
+                    if (maze[x][y - 1].equals(" ")) {
                         maze[x][y - 1] = player;
                         y--;
                         score++;
-                        break;
                     } else if (maze[x][y - 1].equals("◆")) {
                         System.out.println("== Goal ==");
                         System.out.println("Score : " + (perfectScore - score));
                         game = false;
-                        break;
                     } else {
+                        maze[x][y] = player;
                         System.out.println("길이 막혀있습니다");
                         score++;
-                        continue;
                     }
                 } else if (cmd.equals("s")) {
                     chack = true;
-                    maze[x][y] = "□";
-                    if (maze[x + 1][y].equals("□")) {
+                    maze[x][y] = " ";
+                    if (maze[x + 1][y].equals(" ")) {
                         maze[x + 1][y] = player;
                         x++;
                         score++;
-                        break;
                     } else if (maze[x + 1][y].equals("◆")) {
                         System.out.println("== Goal ==");
                         System.out.println("Score : " + (perfectScore - score));
                         game = false;
-                        break;
                     } else {
+                        maze[x][y] = player;
                         System.out.println("길이 막혀있습니다");
                         score++;
-                        continue;
                     }
                 } else if (cmd.equals("d")) {
                     chack = true;
-                    maze[x][y] = "□";
-                    if (maze[x][y + 1].equals("□")) {
+                    maze[x][y] = " ";
+                    if (maze[x][y + 1].equals(" ")) {
                         maze[x][y + 1] = player;
                         y++;
                         score++;
-                        break;
                     } else if (maze[x][y + 1].equals("◆")) {
                         System.out.println("== Goal ==");
                         System.out.println("Score : " + (perfectScore - score));
                         game = false;
-                        break;
                     } else {
+                        maze[x][y] = player;
                         System.out.println("길이 막혀있습니다");
                         score++;
-                        continue;
                     }
                 } else if (cmd.equals("exit")) {
                     System.out.println("== 게임 종료 ==");
                     game = false;
-                    break;
                 } else {
                     System.out.println("잘못된 COMMAND 입니다.");
                     chack = false;
-                }
             }
         }
     }
