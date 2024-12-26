@@ -13,7 +13,7 @@
 ## 🖼️ **프로젝트 화면**  
 아래는 게임 실행 화면입니다:  
 
-![Maze 프로젝트](https://github.com/user-attachments/assets/29de23ff-ad1a-4888-ac5a-3ded5a5f1b82)  
+![Maze 프로젝트](https://github.com/user-attachments/assets/2c25b2d4-924f-4ab0-b764-0c3469ff5238)
 
 ---
 
